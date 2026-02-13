@@ -1,0 +1,81 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+	xmlns:l="sap.ui.layout"
+	xmlns:upload="sap.m.upload">
+	<Dialog contentWidth="40%" showHeader="true" title="Absence Audit">
+		<Toolbar visible="{MASTER_MODEL>/Labels/V_CLMPR_ADD_TASKS_TITLE}">
+			<Title text="{MASTER_MODEL>/Labels/L_CLMPR_ADD_TASKS_TITLE}"/>
+		</Toolbar>
+		<VBox id="_id_AddTask_Container">
+			<l:BlockLayout background="Dashboard">
+				<l:BlockLayoutRow class="sapUiNoContentPadding sapUiNoMargin">
+					<l:BlockLayoutCell backgroundColorSet="ColorSet11" backgroundColorShade="ShadeD">
+						<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="false"
+							emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+							<f:content>
+								<Label design="Bold" text="Absence Type" required="true"/>
+								<ComboBox selectedKey="{worklistView>/oAbscence/sAbscenceType}" items="{path : 'worklistView>/aType'}">
+									<core:Item key="{worklistView>SEQID}" text="{worklistView>TXVAL}"/>
+									<layoutData>
+										<l:GridData span="XL6 L6 M6 S11"/>
+									</layoutData>
+								</ComboBox>
+								<Label design="Bold" text="Updated By" required="false"/>
+								<Text text="Subham Ghosh">
+									<layoutData>
+										<l:GridData span="XL6 L6 M6 S11"/>
+									</layoutData>
+								</Text>
+								<Label design="Bold" text="Select Date(s)" required="true"/>
+								<l:VerticalLayout>
+									<u:Calendar id="calendar" minDate="{worklistView>/DemoMin}" maxDate="{worklistView>/DemoMax}" select="handleCalendarSelect" intervalSelection="false" singleSelection="false"/>
+									<Button press="handleRemoveSelection" text="Remove All Selected Dates"/>
+									<ScrollContainer height="100px" vertical="true" horizontal="false">
+										<List id="selectedDatesList" class="labelMarginLeft" noDataText="No Dates Selected" headerText="Selected Dates"
+											items="{path: 'worklistView>/selectedDates'}">
+											<StandardListItem title="{worklistView>Date}"/>
+										</List>
+									</ScrollContainer>
+								</l:VerticalLayout>
+								<Label design="Bold" text="Number of Hours" required="true"/>
+								<Input value="{worklistView>/oAbscence/NoHours}" change="onChangeTotalHours">
+									<layoutData>
+										<l:GridData span="XL6 L6 M6 S11"/>
+									</layoutData>
+								</Input>
+								<Label design="Bold" text="Total Hours"/>
+								<Input value="{worklistView>/oAbscence/TotalHours}" editable="false">
+									<layoutData>
+										<l:GridData span="XL6 L6 M6 S11"/>
+									</layoutData>
+								</Input>
+								<VBox>
+									<Toolbar width="100%">
+										<Label design="Bold" text="Reason"/>
+									</Toolbar>
+									<TextArea value="{worklistView>/oAbscence/Reason}" rows="3" width="100%">
+										<layoutData>
+											<l:GridData span="XL12 L12 M12 S12"/>
+										</layoutData>
+									</TextArea>
+									<layoutData>
+										<l:GridData span="XL12 L12 M12 S12"/>
+									</layoutData>
+								</VBox>
+							</f:content>
+						</f:SimpleForm>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+			</l:BlockLayout>
+		</VBox>
+		<buttons>
+			<Button text="Submit" icon="sap-icon://crm-service-manager" press="onPressSubmitAbscence" type="Accept"/>
+			<Button text="Cancel" icon="sap-icon://cancel" visible="true" press="onPressSubmitAbscence" type="Reject"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+ 

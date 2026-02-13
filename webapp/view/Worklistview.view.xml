@@ -1,0 +1,17 @@
+<mvc:View controllerName="demo.app.demofiori.controller.Worklistview"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <IconTabBar id="icontabbar" expandable="false" select="onIconTabBarSelect" selectedKey="{objectView>/sSelectedKey}">
+                <items>
+                    <IconTabFilter icon="sap-icon://time-off" iconColor="Critical" text="Absence and Restrictions" tooltip="Absence and Restrictions" design="Horizontal" key="1">
+                        <ScrollContainer horizontal="false" vertical="true" height="100%">
+                            <core:Fragment fragmentName="demo.app.demofiori.view.iconTabFragments.Absence_Restrictions" type="XML"/>
+                        </ScrollContainer>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

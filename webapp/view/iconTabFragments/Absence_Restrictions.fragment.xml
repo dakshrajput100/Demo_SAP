@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:upload="sap.m.upload" xmlns:gt="sap.ui.table">
+	<VBox id="idJobBid" class="sapUiSmallMargin">
+		<Panel expandable="true" expanded="true" headerText="Absence and Restrictions">
+            <Toolbar >
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="Add" type="Emphasized" press="onPressAddAbscence"></Button>
+            </Toolbar>
+			<l:BlockLayout background="Dashboard">
+				<l:BlockLayoutRow class="sapUiNoContentPadding sapUiNoMargin">
+					<l:BlockLayoutCell>
+                        <FlexBox >
+                            <gt:Table rows="{worklistView>/aTotalAbscence}" visibleRowCount="1">
+                                <gt:columns>
+                                    <gt:Column width="auto" minWidth="200">
+                                        <Toolbar>
+                                            <Label text="Total Absence Days" wrapping="true" textAlign="Center" design="Bold"/>
+                                            <ToolbarSpacer ></ToolbarSpacer>
+                                        </Toolbar>
+                                        <gt:template>
+                                            <Text text="{worklistView>TOTAL}"/>
+                                        </gt:template>
+                                    </gt:Column>
+                                </gt:columns>
+                            </gt:Table>
+                        </FlexBox>
+						<VBox ></VBox>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+			</l:BlockLayout>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

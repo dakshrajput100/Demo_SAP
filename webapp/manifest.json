@@ -1,0 +1,115 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "demo.app.demofiori",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.2",
+      "toolsId": "6798fbe3-2ce6-4879-bd9c-af840b88b5a9"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "demoapp-Display": {
+          "semanticObject": "demoapp",
+          "action": "Display",
+          "title": "{{demoapp-Display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.40",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "demo.app.demofiori.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "demo.app.demofiori.view",
+        "async": true,
+        "viewPath": "demo.app.demofiori.view"
+      },
+      "routes": [
+        {
+          "name": "RouteWorklistview",
+          "pattern": ":?query:",
+          "target": [
+            "TargetWorklistview"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetWorklistview": {
+          "id": "Worklistview",
+          "name": "Worklistview"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "demo.app.demofiori.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "demoappdemofiori"
+  }
+}
